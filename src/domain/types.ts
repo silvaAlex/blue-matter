@@ -27,6 +27,7 @@ export interface BlueMatterOptions {
    */
   excerpt?: boolean | string | ((file: BlueMatterFile, options: Required<Pick<BlueMatterOptions, 'delimiters'>> & BlueMatterOptions) => BlueMatterFile);
   excerpt_separator?: string;
+  [key: string]: unknown;
 }
 
 

@@ -29,7 +29,7 @@ export function stringify(file: FileInput, data?: MatterData, options?: BlueMatt
   const mergedData = { ...resolvedFile.data, ...resolvedData };
   const open = opts.delimiters[0] as string;
   const close = opts.delimiters[1] as string;
-  const matter = engine.stringify(mergedData, options as unknown as Record<string, unknown> | undefined).trim();
+  const matter = engine.stringify(mergedData, options).trim();
   let buf = '';
 
   if (matter !== '{}') {
