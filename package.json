@@ -3,7 +3,18 @@
   "version": "1.0.0",
   "description": "A TypeScript library for parsing front matter in Markdown files.",
   "type": "module",
-  "main": "index.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
   "engines": {
     "node": ">=24"
   },

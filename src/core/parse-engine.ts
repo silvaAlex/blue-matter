@@ -6,5 +6,5 @@ export function parseWithEngine(language: string, str: string, options: Normaliz
   if (typeof engine.parse !== 'function') {
     throw new TypeError(`expected "${language}.parse" to be a function`);
   }
-  return engine.parse(str, options);
+  return engine.parse(str, options as unknown as Record<string, unknown>);
 }

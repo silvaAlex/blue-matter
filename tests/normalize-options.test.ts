@@ -18,22 +18,13 @@ describe('normalizeOptions()', () => {
     assert.deepStrictEqual(opts.delimiters, ['+++', '===']);
   });
 
-  it('honors the deprecated `delims` alias', () => {
-    const opts = normalizeOptions({ delims: '***' });
-    assert.deepStrictEqual(opts.delimiters, ['***', '***']);
-  });
-
   it('defaults language to "yaml" and lowercases it', () => {
     assert.strictEqual(normalizeOptions().language, 'yaml');
     assert.strictEqual(normalizeOptions({ language: 'JSON' }).language, 'json');
   });
 
-  it('honors the deprecated `lang` alias', () => {
-    assert.strictEqual(normalizeOptions({ lang: 'JSON' }).language, 'json');
-  });
-
-  it('merges custom engines/parsers without dropping built-ins', () => {
-    const opts = normalizeOptions({ parsers: { toml: { parse: () => ({}), stringify: () => '' } } });
+  it('merges custom engines without dropping built-ins', () => {
+    const opts = normalizeOptions({ engines: { toml: { parse: () => ({}), stringify: () => '' } } });
     const keys = Object.keys(opts.engines).sort();
     assert.deepStrictEqual(keys, ['json', 'toml', 'yaml']);
   });

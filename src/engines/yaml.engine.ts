@@ -1,6 +1,13 @@
 import * as yaml from 'js-yaml';
 import type { MatterData, MatterEngine } from '../domain/types.ts';
 
+export interface YamlEngineOptions {
+  indent?: number;
+  lineWidth?: number;
+  noRefs?: boolean;
+  sortKeys?: boolean;
+}
+
 export const yamlEngine: MatterEngine = {
   parse(input: string): MatterData {
     const result = yaml.load(input);
@@ -10,7 +17,12 @@ export const yamlEngine: MatterEngine = {
     }
     return result as MatterData;
   },
-  stringify(data: MatterData): string {
-    return yaml.dump(data);
+  stringify(data: MatterData, options?: YamlEngineOptions): string {
+    return yaml.dump(data, {
+      indent: options?.indent,
+      lineWidth: options?.lineWidth,
+      noRefs: options?.noRefs ?? true,
+      sortKeys: options?.sortKeys,
+    });
   }
 };

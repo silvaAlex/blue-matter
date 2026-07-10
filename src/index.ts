@@ -16,6 +16,9 @@ export type {
   FileInput
 } from './domain/types.ts';
 
+export type { YamlEngineOptions } from './engines/yaml.engine.ts';
+export type { JsonEngineOptions } from './engines/json.engine.ts';
+
 export {
   matter,
   stringify,

@@ -1,27 +1,21 @@
 export type MatterData = Record<string, unknown>;
 
 export interface MatterEngine {
-  parse(input: string, options?: BlueMatterOptions): MatterData;
-  stringify(data: MatterData, options?: BlueMatterOptions): string;
+  parse(input: string, options?: Record<string, unknown>): MatterData;
+  stringify(data: MatterData, options?: Record<string, unknown>): string;
 }
 
-export type EngineParseFn = (input: string, options?: BlueMatterOptions) => MatterData;
+export type EngineParseFn = (input: string, options?: Record<string, unknown>) => MatterData;
 
 export type EngineRegistry = Record<string, MatterEngine | EngineParseFn>;
 
 export interface BlueMatterOptions {
   /** Delimiter(s) that wrap the front matter block. Defaults to "---". */
   delimiters?: string | string[];
-  /** @deprecated alias of `delimiters`, kept for backwards compatibility. */
-  delims?: string | string[];
   /** Language used to parse/stringify front matter. Defaults to "yaml". */
   language?: string;
-  /** @deprecated alias of `language`, kept for backwards compatibility. */
-  lang?: string;
   /** Extra/override engines merged into the default registry. */
   engines?: EngineRegistry;
-  /** @deprecated alias of `engines`, kept for backwards compatibility. */
-  parsers?: EngineRegistry;
   /** Data merged into parsed front matter, or used when stringifying. */
   data?: MatterData;
   /**

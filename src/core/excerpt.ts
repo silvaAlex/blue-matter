@@ -5,7 +5,7 @@ export function applyExcerpt(file: BlueMatterFile, options: NormalizedOptions): 
     return options.excerpt(file, options as Required<Pick<typeof options, 'delimiters'>> & typeof options);
   }
 
-  const sepFromData = file.data.excerpt_separator as string | undefined;
+  const sepFromData = typeof file.data.excerpt_separator === 'string' ? file.data.excerpt_separator : undefined;
   const sep = sepFromData ?? options.excerpt_separator;
 
   if (sep === undefined && (options.excerpt === false || options.excerpt == null)) {
