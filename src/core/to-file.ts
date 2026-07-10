@@ -1,5 +1,5 @@
 import type { FileInput, BlueMatterFile } from '../domain/types.ts';
-import { isObject, toBuffer, toString } from '../utils/index.ts';
+import { isBuffer, isObject, toBuffer, toString } from '../utils/index.ts';
 
 /**
  * Normalizes the given value into a `BlueMatterFile` shell (content/data/etc
@@ -11,7 +11,7 @@ export function toFile(input: FileInput): BlueMatterFile {
     const partial = input as Partial<BlueMatterFile>;
 
     const rawContent = partial.content ?? (partial as { contents?: string | Buffer }).contents ?? '';
-    const orig = toBuffer(rawContent as string | Buffer);
+    const orig = isBuffer(rawContent) || typeof rawContent === 'string' ? toBuffer(rawContent) : Buffer.from('');
     const content = toString(rawContent);
 
     return {
@@ -28,7 +28,7 @@ export function toFile(input: FileInput): BlueMatterFile {
     };
   }
 
-  const rawContent = (input as string | Buffer) ?? '';
+  const rawContent = input as string | Buffer;
   const orig = toBuffer(rawContent);
   const content = toString(rawContent);
 

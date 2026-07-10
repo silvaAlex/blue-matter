@@ -26,4 +26,16 @@ describe('stringify()', () => {
     // @ts-expect-error intentionally invalid input for the runtime check
     assert.throws(() => stringify(42), TypeError);
   });
+
+  it('converts a Buffer to UTF-8 string when no data/options', () => {
+    const buf = Buffer.from('hello world', 'utf8');
+    assert.strictEqual(stringify(buf), 'hello world');
+  });
+
+  it('round-trips a Buffer through matter then stringify', () => {
+    const buf = Buffer.from('---\ntitle: X\n---\nBody\n');
+    const file = matter(buf);
+    const out = stringify(file, { title: 'newtitle' });
+    assert.strictEqual(out, '---\ntitle: newtitle\n---\nBody\n');
+  });
 });

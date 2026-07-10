@@ -34,4 +34,9 @@ describe('excerpt extraction', () => {
     });
     assert.strictEqual(file.excerpt, 'Full');
   });
+
+  it('ignores non-string excerpt_separator from front matter', () => {
+    const file = matter('---\nexcerpt_separator: 123\n---\nIntro\n---\nRest\n', { excerpt: false });
+    assert.strictEqual(file.excerpt, '');
+  });
 });
