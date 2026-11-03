@@ -1,14 +1,14 @@
-# @blue-matter/core
+# @silvaalex/blue-matter
 
 > A lightweight TypeScript library for reading, parsing, and updating Markdown front matter safely.
 
 [![CI](https://github.com/silvaAlex/blue-matter/actions/workflows/ci.yml/badge.svg)](https://github.com/silvaAlex/blue-matter/actions/workflows/ci.yml)
-[![npm version](https://img.shields.io/npm/v/@blue-matter/core)](https://www.npmjs.com/package/@blue-matter/core)
+[![npm version](https://img.shields.io/npm/v/@silvaalex/blue-matter)](https://www.npmjs.com/package/@silvaalex/blue-matter)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ## Overview
 
-`@blue-matter/core` is a utility library for developers building plugins, automation tools, and scripts for Obsidian.
+`@silvaalex/blue-matter` is a utility library for developers building plugins, automation tools, and scripts for Obsidian.
 
 It provides a simple API to read, modify, and write YAML or JSON front matter while preserving the rest of the Markdown document.
 
@@ -29,19 +29,19 @@ It provides a simple API to read, modify, and write YAML or JSON front matter wh
 ## Installation
 
 ```bash
-npm install @blue-matter/core
+npm install @silvaalex/blue-matter
 ```
 
 or
 
 ```bash
-pnpm add @blue-matter/core
+pnpm add @silvaalex/blue-matter
 ```
 
 or
 
 ```bash
-yarn add @blue-matter/core
+yarn add @silvaalex/blue-matter
 ```
 
 ## Usage
@@ -49,7 +49,7 @@ yarn add @blue-matter/core
 ### Parse front matter
 
 ```ts
-import { matter } from "@blue-matter/core";
+import { matter } from "@silvaalex/blue-matter";
 
 const markdown = `---
 title: My Note
@@ -73,7 +73,7 @@ console.log(file.content);
 ### Update metadata
 
 ```ts
-import { matter, stringify } from "@blue-matter/core";
+import { matter, stringify } from "@silvaalex/blue-matter";
 
 const markdown = `---
 title: Old title
