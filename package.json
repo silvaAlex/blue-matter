@@ -1,5 +1,5 @@
 {
-  "name": "@blue-matter/core",
+  "name": "@silvaalex/blue-matter",
   "version": "1.0.0",
   "description": "A TypeScript library for parsing and updating Markdown front matter.",
   "type": "module",
